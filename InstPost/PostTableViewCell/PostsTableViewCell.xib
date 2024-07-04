@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostsTableViewCell" id="ato-PF-JME" customClass="PostsTableViewCell" customModule="InstPost" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ato-PF-JME" id="bNK-bw-OkW">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FyY-NB-6wq">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SV3-x0-aOe">
+                                <rect key="frame" x="0.0" y="1" width="335" height="198"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiF-p5-hEv">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="198"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is4-Y0-2CH">
+                                                <rect key="frame" x="5" y="5" width="325" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqG-lA-4uI">
+                                                <rect key="frame" x="5" y="50.666666666666671" width="325" height="142.33333333333331"/>
+                                                <string key="text">quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="xqG-lA-4uI" secondAttribute="trailing" constant="5" id="1Vq-Gu-gqi"/>
+                                            <constraint firstItem="is4-Y0-2CH" firstAttribute="leading" secondItem="oiF-p5-hEv" secondAttribute="leading" constant="5" id="7x5-VZ-otN"/>
+                                            <constraint firstAttribute="bottom" secondItem="xqG-lA-4uI" secondAttribute="bottom" constant="5" id="HlV-HA-hbQ"/>
+                                            <constraint firstItem="xqG-lA-4uI" firstAttribute="leading" secondItem="oiF-p5-hEv" secondAttribute="leading" constant="5" id="Mde-4w-RmC"/>
+                                            <constraint firstItem="is4-Y0-2CH" firstAttribute="top" secondItem="oiF-p5-hEv" secondAttribute="top" constant="5" id="RH4-Ii-w4L"/>
+                                            <constraint firstItem="xqG-lA-4uI" firstAttribute="top" secondItem="is4-Y0-2CH" secondAttribute="bottom" constant="5" id="c4o-Ql-QiN"/>
+                                            <constraint firstAttribute="trailing" secondItem="is4-Y0-2CH" secondAttribute="trailing" constant="5" id="lMx-c8-wqb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evr-Y0-nsL">
+                                <rect key="frame" x="340" y="70" width="60" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="yyE-t4-kdP">
+                                        <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="MvT-x5-Ikc"/>
+                                            <constraint firstAttribute="height" constant="50" id="YQe-wW-FKc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bf2-hA-JCe">
+                                        <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                        <color key="tintColor" systemColor="systemGray5Color"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="bf2-hA-JCe" firstAttribute="top" secondItem="yyE-t4-kdP" secondAttribute="top" id="4W1-6B-95e"/>
+                                    <constraint firstItem="bf2-hA-JCe" firstAttribute="trailing" secondItem="yyE-t4-kdP" secondAttribute="trailing" id="4dA-2F-IjQ"/>
+                                    <constraint firstItem="yyE-t4-kdP" firstAttribute="top" secondItem="Evr-Y0-nsL" secondAttribute="top" constant="5" id="4ik-Tf-XfV"/>
+                                    <constraint firstItem="bf2-hA-JCe" firstAttribute="leading" secondItem="yyE-t4-kdP" secondAttribute="leading" id="Pe8-d6-iqR"/>
+                                    <constraint firstAttribute="bottom" secondItem="yyE-t4-kdP" secondAttribute="bottom" constant="5" id="Q14-8n-88f"/>
+                                    <constraint firstAttribute="trailing" secondItem="yyE-t4-kdP" secondAttribute="trailing" constant="5" id="fPT-l8-DpI"/>
+                                    <constraint firstItem="yyE-t4-kdP" firstAttribute="leading" secondItem="Evr-Y0-nsL" secondAttribute="leading" constant="5" id="lbs-eX-fY2"/>
+                                    <constraint firstItem="bf2-hA-JCe" firstAttribute="bottom" secondItem="yyE-t4-kdP" secondAttribute="bottom" id="pid-FA-Zx8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FyY-NB-6wq" secondAttribute="trailing" id="8Cn-OW-4Ho"/>
+                    <constraint firstAttribute="bottom" secondItem="FyY-NB-6wq" secondAttribute="bottom" id="Ujn-Ss-yB7"/>
+                    <constraint firstItem="FyY-NB-6wq" firstAttribute="top" secondItem="bNK-bw-OkW" secondAttribute="top" id="oZY-06-nKe"/>
+                    <constraint firstItem="FyY-NB-6wq" firstAttribute="leading" secondItem="bNK-bw-OkW" secondAttribute="leading" id="sar-KT-ZO8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="favouriteButton" destination="bf2-hA-JCe" id="QUJ-wx-hI8"/>
+                <outlet property="favouriteImageView" destination="yyE-t4-kdP" id="9d9-7t-Zd4"/>
+                <outlet property="postDescription" destination="xqG-lA-4uI" id="csn-xc-2bk"/>
+                <outlet property="postTitle" destination="is4-Y0-2CH" id="6xe-LH-sAb"/>
+            </connections>
+            <point key="canvasLocation" x="-221" y="-13"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="star" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

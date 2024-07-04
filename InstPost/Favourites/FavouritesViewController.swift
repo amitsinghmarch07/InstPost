@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FavouritesViewController.swift
 //  InstPost
 //
 //  Created by Amit singh on 03/07/24.
@@ -7,13 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FavouritesViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Additional setup for the Favourites view
     }
-
-
 }
-
