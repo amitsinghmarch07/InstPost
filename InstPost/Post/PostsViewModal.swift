@@ -21,7 +21,7 @@ class PostsViewModel {
     private let apiService: APIService = APIServiceFactory.getApiService()
     
     let reloadTableView = PublishSubject<Bool>();
-    
+
     init() {
         subscribeCoreDataSubject()
         fetchPostsFromAPIAndSaveToCoreData()

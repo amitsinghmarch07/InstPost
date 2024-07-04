@@ -7,7 +7,6 @@ target 'InstPost' do
   # Pods for InstPost
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'SDWebImage'
   pod 'RxDataSources'
 
   target 'InstPostTests' do
