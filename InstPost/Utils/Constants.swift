@@ -8,5 +8,5 @@
 import Foundation
 
 let baseURL = "https://jsonplaceholder.typicode.com/"
-let posts = "posts"
-let comments = "comments"
+let postsURL = baseURL + "posts"
+let commentsURL = baseURL + "comments"

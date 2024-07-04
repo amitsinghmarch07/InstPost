@@ -76,6 +76,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func getKeyWindow() -> UIWindow? {
+        // For iOS 13 and later, iterate over connected scenes
+        if #available(iOS 13.0, *) {
+            // Look for the key window scene
+            let windowScene = UIApplication.shared.connectedScenes
+                .filter { $0.activationState == .foregroundActive }
+                .compactMap { $0 as? UIWindowScene }
+                .first
+            
+            // Get the key window from the window scene
+            if let windowScene = windowScene {
+                return windowScene.windows.first { $0.isKeyWindow }
+            }
+        } else {
+            // Fallback on earlier versions
+            return UIApplication.shared.keyWindow
+        }
+        
+        return nil
+    }
 
 }
 

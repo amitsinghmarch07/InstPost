@@ -10,11 +10,13 @@ import RxSwift
 protocol APIService {
     func fetchPosts() -> Observable<[PostEntity]>
 }
+
 class URLSessionAPIService: APIService {
     static private let shared = URLSessionAPIService()
 
     func fetchPosts() -> Observable<[PostEntity]> {
-        let url = URL(string: baseURL)!
+        
+        let url = URL(string: postsURL)!
 
         return Observable.create { observer -> Disposable in
             let task = URLSession.shared.dataTask(with: url) { data, response, error in

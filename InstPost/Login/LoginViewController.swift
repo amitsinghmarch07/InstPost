@@ -43,18 +43,13 @@ class LoginViewController: BaseViewController {
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "PostTabbarController") as? PostTabbarController {
-            // Navigate to ViewControllerB
             
-            let navigationController = UINavigationController(rootViewController: tabBarController)
-            if let window = UIApplication.shared.windows.first {
+            let navigationController = BaseNavigationViewController(rootViewController: tabBarController)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+               let window = appDelegate.getKeyWindow() {
                 window.rootViewController = navigationController
                 window.makeKeyAndVisible()
             }
-        } else {
-            // Show error message
-            let alert = UIAlertController(title: "Error", message: "Invalid email or password", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
         }
     }
 }

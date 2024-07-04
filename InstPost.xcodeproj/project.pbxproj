@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2B0E2F5058CBE8D9802D6425 /* Pods_InstPostTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8473E75AECCD423696319F2A /* Pods_InstPostTests.framework */; };
 		4C99F46B364F7CF7F777E79B /* Pods_InstPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C4FBA31074484241C83A2 /* Pods_InstPost.framework */; };
+		565A7D6D2C366DC8008DF4BC /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */; };
+		565A7D6E2C366DC8008DF4BC /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */; };
+		565A7D702C368AD3008DF4BC /* FavouritesViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */; };
 		56EBD3A42C3526B500991D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A32C3526B500991D06 /* AppDelegate.swift */; };
 		56EBD3A62C3526B500991D06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A52C3526B500991D06 /* SceneDelegate.swift */; };
 		56EBD3A82C3526B500991D06 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A72C3526B500991D06 /* LoginViewController.swift */; };
@@ -74,6 +77,9 @@
 		339B9C703BE4A0A3C4D8B603 /* Pods-InstPost-InstPostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstPost-InstPostUITests.debug.xcconfig"; path = "Target Support Files/Pods-InstPost-InstPostUITests/Pods-InstPost-InstPostUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CB8297F7C16FD8F914D65B7 /* Pods-InstPostTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstPostTests.debug.xcconfig"; path = "Target Support Files/Pods-InstPostTests/Pods-InstPostTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44C746390D4843FFEB323412 /* Pods-InstPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstPost.release.xcconfig"; path = "Target Support Files/Pods-InstPost/Pods-InstPost.release.xcconfig"; sourceTree = "<group>"; };
+		565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
+		565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModal.swift; sourceTree = "<group>"; };
 		56EBD3A02C3526B500991D06 /* InstPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EBD3A32C3526B500991D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EBD3A52C3526B500991D06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,9 +159,11 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		568A9E502C36668300DA37C5 /* CoreDataEntities */ = {
+		565A7D6A2C366DB6008DF4BC /* CoreDataEntities */ = {
 			isa = PBXGroup;
 			children = (
+				565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */,
+				565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */,
 			);
 			path = CoreDataEntities;
 			sourceTree = "<group>";
@@ -189,7 +197,7 @@
 				56EBD3A52C3526B500991D06 /* SceneDelegate.swift */,
 				56EBD3FC2C355D2900991D06 /* BaseViewController.swift */,
 				56EBD3FF2C35648A00991D06 /* PostTabbarController.swift */,
-				568A9E502C36668300DA37C5 /* CoreDataEntities */,
+				565A7D6A2C366DB6008DF4BC /* CoreDataEntities */,
 				56EBD40F2C35723300991D06 /* PostTableViewCell */,
 				56EBD3F62C35595F00991D06 /* Post */,
 				56EBD4082C3570C200991D06 /* Services */,
@@ -257,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				56EBD3F92C355D0400991D06 /* FavouritesViewController.swift */,
+				565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -538,7 +547,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565A7D702C368AD3008DF4BC /* FavouritesViewModal.swift in Sources */,
 				56EBD3A82C3526B500991D06 /* LoginViewController.swift in Sources */,
+				565A7D6E2C366DC8008DF4BC /* Post+CoreDataClass.swift in Sources */,
 				56EBD40D2C3570FD00991D06 /* Constants.swift in Sources */,
 				56EBD3AE2C3526B500991D06 /* InstPost.xcdatamodeld in Sources */,
 				56EBD3E02C35360400991D06 /* PostsViewController.swift in Sources */,
@@ -551,6 +562,7 @@
 				56EBD3F02C354D6300991D06 /* UIColor+Extensions.swift in Sources */,
 				56EBD4032C356B6B00991D06 /* PostsTableViewCell.swift in Sources */,
 				56EBD3ED2C353C4A00991D06 /* UITextfield+Extensions.swift in Sources */,
+				565A7D6D2C366DC8008DF4BC /* Post+CoreDataProperties.swift in Sources */,
 				56EBD4002C35648A00991D06 /* PostTabbarController.swift in Sources */,
 				56EBD3E62C35363100991D06 /* Post.swift in Sources */,
 				56EBD3DD2C3535A400991D06 /* LoginViewModal.swift in Sources */,

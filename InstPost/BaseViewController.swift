@@ -13,3 +13,10 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .customLightBlue
     }
 }
+
+class BaseNavigationViewController: UINavigationController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .customLightBlue
+    }
+}

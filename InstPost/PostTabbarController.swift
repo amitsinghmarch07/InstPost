@@ -8,5 +8,8 @@
 import UIKit
 
 class PostTabbarController: UITabBarController {
-   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .customLightBlue
+    }
 }
