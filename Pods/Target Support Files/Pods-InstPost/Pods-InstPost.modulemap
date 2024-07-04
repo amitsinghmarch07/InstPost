@@ -1,6 +1,0 @@
-framework module Pods_InstPost {
-  umbrella header "Pods-InstPost-umbrella.h"
-
-  export *
-  module * { export * }
-}

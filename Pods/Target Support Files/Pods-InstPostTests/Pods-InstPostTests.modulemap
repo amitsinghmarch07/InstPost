@@ -1,6 +1,0 @@
-framework module Pods_InstPostTests {
-  umbrella header "Pods-InstPostTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
