@@ -28,6 +28,8 @@ class PostsViewModel {
             .flatMap { posts -> Observable<[Post]> in
                 return Observable.create { observer -> Disposable in
                     let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+                    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+
                     // Clear existing data
                     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
                     do {

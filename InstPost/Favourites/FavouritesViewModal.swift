@@ -17,13 +17,15 @@ class FavouritesViewModal {
     let reloadTableView = PublishSubject<Bool>();
     
     init() {
-        
         self.posts = fetchPostsFromCoreData().asDriver(onErrorJustReturn: [])
     }
     
     private func fetchPostsFromCoreData() -> Observable<[Post]> {
         return Observable.create { observer -> Disposable in
             let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "isFavorite == true")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+
             do {
                 let posts = try self.context.fetch(fetchRequest)
                 observer.onNext(posts)
