@@ -11,10 +11,10 @@ import RxCocoa
 import SDWebImage
 
 class PostsViewController: BaseViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
     
-    let viewModel = PostsViewModel()
-    let disposeBag = DisposeBag()
+    private let viewModel = PostsViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

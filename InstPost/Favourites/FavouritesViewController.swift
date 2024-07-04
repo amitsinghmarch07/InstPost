@@ -10,10 +10,10 @@ import RxSwift
 import RxCocoa
 
 class FavouritesViewController: BaseViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
-    let viewModel = FavouritesViewModal()
-    let disposeBag = DisposeBag()
+    private let viewModel = FavouritesViewModal()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
