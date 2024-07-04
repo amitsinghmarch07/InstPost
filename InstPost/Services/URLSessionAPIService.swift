@@ -8,12 +8,12 @@
 import RxSwift
 
 protocol APIService {
-    func fetchPosts() -> Observable<[Post]>
+    func fetchPosts() -> Observable<[PostEntity]>
 }
-class URLSessionAPIService {
+class URLSessionAPIService: APIService {
     static private let shared = URLSessionAPIService()
 
-    func fetchPosts() -> Observable<[Post]> {
+    func fetchPosts() -> Observable<[PostEntity]> {
         let url = URL(string: baseURL)!
 
         return Observable.create { observer -> Disposable in
@@ -22,7 +22,7 @@ class URLSessionAPIService {
                     observer.onError(error)
                 } else if let data = data {
                     do {
-                        let posts = try JSONDecoder().decode([Post].self, from: data)
+                        let posts = try JSONDecoder().decode([PostEntity].self, from: data)
                         observer.onNext(posts)
                         observer.onCompleted()
                     } catch {

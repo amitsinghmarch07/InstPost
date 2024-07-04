@@ -10,7 +10,7 @@ import RxCocoa
 
 class PostsViewModel {
     
-    let posts: Driver<[Post]>
+    let posts: Driver<[PostEntity]>
 
     init(apiService: APIService) {
         posts = apiService.fetchPosts()

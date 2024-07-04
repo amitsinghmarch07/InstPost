@@ -13,7 +13,7 @@ import SDWebImage
 class PostsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    let viewModel = PostsViewModel()
+    let viewModel = PostsViewModel(apiService: URLSessionAPIService())
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -22,15 +22,15 @@ class PostsViewController: BaseViewController {
         tableView.register(nib, forCellReuseIdentifier: "CustomCell")
 
 //         Bind posts to tableView
-        viewModel.posts
-            .bind(to: tableView.rx.items(cellIdentifier: "PostsTableViewCell", cellType: PostsTableViewCell.self)) { index, model, cell in
-                cell.postTitle?.text = model.title
-                // Set other cell properties
-            }
-            .disposed(by: disposeBag)
+//        viewModel.posts
+//            .bind(to: tableView.rx.items(cellIdentifier: "PostsTableViewCell", cellType: PostsTableViewCell.self)) { index, model, cell in
+//                cell.postTitle?.text = model.title
+//                // Set other cell properties
+//            }
+//            .disposed(by: disposeBag)
         
         // Fetch posts
-        viewModel.fetchPosts()
+//        viewModel.fetchPosts()
         
         // Handle post selection
         tableView.rx.modelSelected(Post.self)
