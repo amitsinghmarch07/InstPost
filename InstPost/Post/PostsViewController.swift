@@ -13,7 +13,7 @@ import SDWebImage
 class PostsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    let viewModel = PostsViewModel(apiService: URLSessionAPIService())
+    let viewModel = PostsViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {

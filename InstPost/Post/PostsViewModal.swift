@@ -18,12 +18,11 @@ class PostsViewModel {
     }
     private let disposeBag = DisposeBag()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private let apiService: APIService
+    private let apiService: APIService = APIServiceFactory.getApiService()
     
     let reloadTableView = PublishSubject<Bool>();
     
-    init(apiService: APIService) {
-        self.apiService = apiService
+    init() {
         subscribeCoreDataSubject()
         fetchPostsFromAPIAndSaveToCoreData()
         
