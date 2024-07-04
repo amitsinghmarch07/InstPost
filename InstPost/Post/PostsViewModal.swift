@@ -11,7 +11,12 @@ import CoreData
 
 class PostsViewModel {
     
-    var posts: Driver<[Post]>?
+    private let updateToCoreDataSubject = PublishSubject<[Post]>()
+    private let postsSubject = BehaviorSubject<[Post]>(value: [])
+    var posts: Driver<[Post]> {
+        return postsSubject.asDriver(onErrorJustReturn: [])
+    }
+    let disposeBag = DisposeBag()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let apiService: APIService
     
@@ -19,78 +24,81 @@ class PostsViewModel {
     
     init(apiService: APIService) {
         self.apiService = apiService
-        
+        subscribeCoreDataSubject()
         fetchPostsFromAPIAndSaveToCoreData()
+        
     }
     
     private func fetchPostsFromAPIAndSaveToCoreData() {
-        let postsFromAPI = self.apiService.fetchPosts()
-            .flatMap { posts -> Observable<[Post]> in
-                return Observable.create { observer -> Disposable in
-                    let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-                    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-
-                    // Clear existing data
-                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
-                    do {
-                        try self.context.execute(deleteRequest)
-                        try self.context.save()
-                    } catch {
-                        observer.onError(error)
-                    }
-                    
-                    // Save new data
-                    for postModel in posts {
-                        let entity = Post(context: self.context)
-                        entity.id = Int32(postModel.id)
-                        entity.title = postModel.title
-                        entity.body = postModel.body
-                        entity.isFavorite = false
-                    }
-                    
-                    do {
-                        try self.context.save()
-                        let savedPosts = try self.context.fetch(fetchRequest)
-                        observer.onNext(savedPosts)
-                        observer.onCompleted()
-                    } catch {
-                        observer.onError(error)
-                    }
-                    return Disposables.create()
+        self.apiService.fetchPosts()
+            .asObservable()
+            .subscribe {[unowned self] posts in
+                let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+                
+                // Clear existing data
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+                do {
+                    try self.context.execute(deleteRequest)
+                    try self.context.save()
+                } catch {
+                    self.updateToCoreDataSubject.onError(error)
                 }
+                
+                // Save new data
+                for postModel in posts {
+                    let entity = Post(context: self.context)
+                    entity.id = Int32(postModel.id)
+                    entity.title = postModel.title
+                    entity.body = postModel.body
+                    entity.isFavorite = false
+                }
+                
+                do {
+                    try self.context.save()
+                    let savedPosts = try self.context.fetch(fetchRequest)
+                    self.updateToCoreDataSubject.onNext(savedPosts)
+                    self.updateToCoreDataSubject.onCompleted()
+                } catch {
+                    self.updateToCoreDataSubject.onError(error)
+                }
+                
+            } onError: {[unowned self] error in
+                self.updateToCoreDataSubject.onError(error)
             }
-        
-        let postsObservable = postsFromAPI
-            .catch { _ in
-                return self.fetchPostsFromCoreData()
-            }
-            .catchAndReturn([]) // If both API and Core Data fetch fail, return an empty array
-            .share(replay: 1)
-        
-        self.posts = postsObservable.asDriver(onErrorJustReturn: [])
+            .disposed(by: disposeBag)
     }
     
-    private func fetchPostsFromCoreData() -> Observable<[Post]> {
-        return Observable.create { observer -> Disposable in
-            let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-            do {
-                let posts = try self.context.fetch(fetchRequest)
-                observer.onNext(posts)
-                observer.onCompleted()
-            } catch {
-                observer.onError(error)
-            }
-            return Disposables.create()
+    private func subscribeCoreDataSubject() {
+        updateToCoreDataSubject
+            .subscribe(onNext: {[weak self] posts in
+                self?.postsSubject.onNext(posts)
+            }, onError: {[weak self] error in
+                self?.fetchPostsFromCoreData()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchPostsFromCoreData() {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        do {
+            let posts = try context.fetch(fetchRequest)
+            postsSubject.onNext(posts)
+        } catch {
+            postsSubject.onError(error)
         }
     }
     
     func toggleFavorite(post: Post) {
-        post.isFavorite = !post.isFavorite
-        do {
-            try context.save()
-            reloadTableView.onNext(true)
-        } catch {
-            print("Failed to update favorite status: \(error)")
+        context.performAndWait {
+            post.isFavorite = !post.isFavorite
+            do {
+                try context.save()
+                fetchPostsFromCoreData()
+            } catch {
+                print("Failed to update favorite status: \(error)")
+            }
         }
     }
 }

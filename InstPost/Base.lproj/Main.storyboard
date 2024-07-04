@@ -94,7 +94,7 @@
         <!--Favorites-->
         <scene sceneID="URO-bP-ww1">
             <objects>
-                <viewController storyboardIdentifier="FavouritesViewController" id="hYm-g1-xuB" customClass="FavouritesViewController" customModule="InstPost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouritesViewController" title="Favorites" id="hYm-g1-xuB" customClass="FavouritesViewController" customModule="InstPost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a9C-8u-BHI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,7 +125,7 @@
         <!--PostsViewController-->
         <scene sceneID="LqN-ky-FZN">
             <objects>
-                <viewController storyboardIdentifier="PostsViewController" id="oDu-le-aQ8" userLabel="PostsViewController" customClass="PostsViewController" customModule="InstPost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostsViewController" title="Posts" id="oDu-le-aQ8" userLabel="PostsViewController" customClass="PostsViewController" customModule="InstPost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFG-qI-uwT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +144,7 @@
                             <constraint firstItem="iGP-hu-s3g" firstAttribute="trailing" secondItem="uTb-7G-cna" secondAttribute="trailing" id="GP3-7I-StA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Posts" id="FpI-p2-mB0" userLabel="Post"/>
+                    <tabBarItem key="tabBarItem" title="Posts" id="FpI-p2-mB0"/>
                     <connections>
                         <outlet property="tableView" destination="uTb-7G-cna" id="NHG-LL-dHn"/>
                     </connections>

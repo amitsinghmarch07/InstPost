@@ -18,6 +18,7 @@ class PostsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Posts"
         let nib = UINib(nibName: "PostsTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostsTableViewCell")
 
@@ -27,7 +28,7 @@ class PostsViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.posts?
+        viewModel.posts
             .drive(tableView.rx.items(cellIdentifier: "PostsTableViewCell", cellType: PostsTableViewCell.self)) { index, model, cell in
                 cell.postTitle?.text = model.title
                 cell.postDescription.text = model.body
@@ -37,6 +38,17 @@ class PostsViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        
+        if let tabBarController = self.tabBarController {
+            tabBarController.rx.didSelect
+                .subscribe(onNext: { [weak self] viewController in
+                    // Check if the selected view controller is the current view controller
+                    if viewController == self {
+                        self?.viewModel.fetchPostsFromCoreData()
+                    }
+                })
+                .disposed(by: disposeBag)
+        }
         
         // Handle post selection
         tableView.rx.modelSelected(Post.self)

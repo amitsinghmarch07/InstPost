@@ -12,7 +12,7 @@ import RxCocoa
 class FavouritesViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
-    let viewModel = PostsViewModel(apiService: URLSessionAPIService())
+    let viewModel = FavouritesViewModal()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -20,13 +20,24 @@ class FavouritesViewController: BaseViewController {
         let nib = UINib(nibName: "PostsTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostsTableViewCell")
 
+        if let tabBarController = self.tabBarController {
+            tabBarController.rx.didSelect
+                .subscribe(onNext: { [weak self] viewController in
+                    // Check if the selected view controller is the current view controller
+                    if viewController == self {
+                        self?.viewModel.loadFavoritePosts()
+                    }
+                })
+                .disposed(by: disposeBag)
+        }
+        
         viewModel.reloadTableView
             .subscribe(onNext:{[unowned self] _ in
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
         
-        viewModel.posts?
+        viewModel.favoritePosts
             .drive(tableView.rx.items(cellIdentifier: "PostsTableViewCell", cellType: PostsTableViewCell.self)) { index, model, cell in
                 cell.postTitle?.text = model.title
                 cell.postDescription.text = model.body

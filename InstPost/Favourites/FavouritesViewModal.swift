@@ -11,39 +11,39 @@ import CoreData
 
 class FavouritesViewModal {
     
-    var posts: Driver<[Post]>?
+    private let favoritePostsSubject = BehaviorSubject<[Post]>(value: [])
+    var favoritePosts: Driver<[Post]> {
+        return favoritePostsSubject.asDriver(onErrorJustReturn: [])
+    }
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let reloadTableView = PublishSubject<Bool>();
     
     init() {
-        self.posts = fetchPostsFromCoreData().asDriver(onErrorJustReturn: [])
+        loadFavoritePosts()
     }
     
-    private func fetchPostsFromCoreData() -> Observable<[Post]> {
-        return Observable.create { observer -> Disposable in
-            let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "isFavorite == true")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-
-            do {
-                let posts = try self.context.fetch(fetchRequest)
-                observer.onNext(posts)
-                observer.onCompleted()
-            } catch {
-                observer.onError(error)
-            }
-            return Disposables.create()
+    func loadFavoritePosts() {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isFavorite == true")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        do {
+            let posts = try context.fetch(fetchRequest)
+            favoritePostsSubject.onNext(posts)
+        } catch {
+            favoritePostsSubject.onError(error)
         }
     }
     
     func toggleFavorite(post: Post) {
-        post.isFavorite = !post.isFavorite
-        do {
-            try context.save()
-            reloadTableView.onNext(true)
-        } catch {
-            print("Failed to update favorite status: \(error)")
+        context.performAndWait {
+            post.isFavorite = !post.isFavorite
+            do {
+                try context.save()
+                loadFavoritePosts()
+            } catch {
+                print("Failed to update favorite status: \(error)")
+            }
         }
     }
 }
