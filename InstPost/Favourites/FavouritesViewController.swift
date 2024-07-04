@@ -39,8 +39,8 @@ class FavouritesViewController: BaseViewController {
         
         viewModel.favoritePosts
             .drive(tableView.rx.items(cellIdentifier: "PostsTableViewCell", cellType: PostsTableViewCell.self)) { index, model, cell in
-                cell.postTitle?.text = model.title
-                cell.postDescription.text = model.body
+                cell.postTitle?.text = model.title?.capitalizingFirstLetter()
+                cell.postDescription.text = model.body?.capitalizingFirstLetter()
                 cell.favouriteImageView.image = model.isFavorite ?  UIImage(systemName: "star.fill") : UIImage(systemName: "star")
                 cell.favouriteImageView.tintColor = .customCoral
                 // Set other cell properties

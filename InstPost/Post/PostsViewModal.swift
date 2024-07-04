@@ -16,7 +16,7 @@ class PostsViewModel {
     var posts: Driver<[Post]> {
         return postsSubject.asDriver(onErrorJustReturn: [])
     }
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let apiService: APIService
     
