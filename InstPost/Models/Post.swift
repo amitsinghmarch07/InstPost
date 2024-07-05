@@ -28,4 +28,11 @@ struct PostEntity: Codable {
         isFavorite = false
 
     }
+    
+    init(id: Int, title: String, body: String) {
+        self.id = id
+        self.title = title
+        self.body = body
+        self.isFavorite = false
+    }
 }
