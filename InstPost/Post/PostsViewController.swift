@@ -62,7 +62,6 @@ class PostsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Posts"
         
         reloadTableViewObserver()
         configureTableView()
