@@ -17,12 +17,16 @@ class PostsViewModel {
         return postsSubject.asDriver(onErrorJustReturn: [])
     }
     private let disposeBag = DisposeBag()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let context: NSManagedObjectContext
     var apiService: APIService = APIServiceFactory.getApiService()
     
     let reloadTableView = PublishSubject<Bool>();
-
-    init() {
+    
+    init(context: NSManagedObjectContext = CoreDataContextFactory.getContext(),
+         apiService: APIService = APIServiceFactory.getApiService()
+    ) {
+        self.context = context
+        self.apiService = apiService
         subscribeCoreDataSubject()
         fetchPostsFromAPIAndSaveToCoreData()
     }

@@ -18,6 +18,7 @@
 		5634006C2C37D47800BDF925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A32C3526B500991D06 /* AppDelegate.swift */; };
 		5634006E2C37F7DC00BDF925 /* PostsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5634006D2C37F7DC00BDF925 /* PostsViewModelTests.swift */; };
 		563400702C37FC8A00BDF925 /* APIServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5634006F2C37FC8A00BDF925 /* APIServiceFactory.swift */; };
+		563400722C37FFDE00BDF925 /* CoreDataContextFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563400712C37FFDE00BDF925 /* CoreDataContextFactory.swift */; };
 		565A7D6D2C366DC8008DF4BC /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */; };
 		565A7D6E2C366DC8008DF4BC /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */; };
 		565A7D702C368AD3008DF4BC /* FavouritesViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */; };
@@ -91,6 +92,7 @@
 		563400642C37D39B00BDF925 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		5634006D2C37F7DC00BDF925 /* PostsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModelTests.swift; sourceTree = "<group>"; };
 		5634006F2C37FC8A00BDF925 /* APIServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceFactory.swift; sourceTree = "<group>"; };
+		563400712C37FFDE00BDF925 /* CoreDataContextFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContextFactory.swift; sourceTree = "<group>"; };
 		565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModal.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				565A7D742C36C45B008DF4BC /* APIServiceFactory.swift */,
+				563400712C37FFDE00BDF925 /* CoreDataContextFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				56EBD3FA2C355D0400991D06 /* FavouritesViewController.swift in Sources */,
 				565A7D752C36C45B008DF4BC /* APIServiceFactory.swift in Sources */,
 				56EBD3A62C3526B500991D06 /* SceneDelegate.swift in Sources */,
+				563400722C37FFDE00BDF925 /* CoreDataContextFactory.swift in Sources */,
 				56EBD40A2C3570DB00991D06 /* URLSessionAPIService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
