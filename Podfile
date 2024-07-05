@@ -12,6 +12,8 @@ target 'InstPost' do
   target 'InstPostTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxTest'
+    pod 'RxBlocking'
   end
 
   target 'InstPostUITests' do
