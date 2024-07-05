@@ -64,4 +64,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 Contact
 For any questions or inquiries, please contact ammi431@gmail.com.
+![LoginScreen](https://github.com/amitsinghmarch07/InstPost/assets/35914384/2ef73d99-8820-4d35-aa89-cb1f22abecc3)
+![PostsScreen](https://github.com/amitsinghmarch07/InstPost/assets/35914384/30aa7cb3-6d02-4a4e-b5a5-15c78476b7b7)
+![FavoriteScreen](https://github.com/amitsinghmarch07/InstPost/assets/35914384/b4353ae7-051b-4b0b-a25a-74b4ae5f5975)
 
