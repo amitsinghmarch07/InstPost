@@ -12,7 +12,6 @@ extension UIButton {
         backgroundColor = isEnabled ? .customCoral : .customMutedCoral
 //        setTitleColor(.white, for: .normal)
         tintColor = isEnabled ? .white : .lightGray
-        print("isEnabled\(isEnabled)")
         layer.cornerRadius = 10
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
