@@ -20,6 +20,7 @@ CocoaPods
 Installation
 Clone the repository:
 git clone https://github.com/amitsinghmarch07/InstPost.git
+
 cd InstPost
 
 Install dependencies:
