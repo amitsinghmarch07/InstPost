@@ -49,7 +49,12 @@ class PostsViewModel {
                 
                 // Save new data
                 for postModel in posts {
-                    let entity = Post(context: self.context)
+                    guard let model = context.persistentStoreCoordinator?.managedObjectModel,
+                          let post = model.entitiesByName["Post"]else {
+                        fatalError("Managed object model not found")
+                    }
+
+                    let entity = Post(entity: post, insertInto: context)
                     entity.id = Int32(postModel.id)
                     entity.title = postModel.title
                     entity.body = postModel.body

@@ -65,17 +65,14 @@ class PostsViewModelTests: XCTestCase {
         // Start the scheduler to begin the emission of events
         scheduler.start()
         
-        // Define the expected events
-//        let expectedEvents = [
-//            Recorded.next(0, []),  // Initial empty posts
-//            Recorded.next(10, [
-//                Post(id: 1, title: "Post 1", body: "Body 1", isFavorite: false),
-//                Post(id: 2, title: "Post 2", body: "Body 2", isFavorite: false)
-//            ])
-//        ]
-//        print(observer.events)
+        XCTAssertEqual(observer.events.count, 1)
+        XCTAssertEqual(observer.events[0].value.element?.count, 2)
         // Assert that the actual events match the expected events
-        XCTAssertEqual(observer.events, [])
+        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 0) as? InstPost.Post)?.id, 1);
+        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 0) as? InstPost.Post)?.title, "Post 1");
+        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 1) as? InstPost.Post)?.id, 2);
+        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 1) as? InstPost.Post)?.title, "Post 2");
+
     }
     
     // Additional tests can go here
