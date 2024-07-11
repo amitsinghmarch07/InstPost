@@ -36,11 +36,12 @@ class FavouritesViewModal {
     }
     
     func toggleFavorite(post: Post) {
-        context.performAndWait {
+        context.perform {[weak self] in
+            guard let self else { return }
             post.isFavorite = !post.isFavorite
             do {
-                try context.save()
-                loadFavoritePosts()
+                try self.context.save()
+                self.loadFavoritePosts()
             } catch {
                 print("Failed to update favorite status: \(error)")
             }

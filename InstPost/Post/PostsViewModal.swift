@@ -52,7 +52,7 @@ class PostsViewModel {
                           let post = model.entitiesByName["Post"]else {
                         fatalError("Managed object model not found")
                     }
-
+                    
                     let entity = Post(entity: post, insertInto: context)
                     entity.id = Int32(postModel.id)
                     entity.title = postModel.title
@@ -97,11 +97,12 @@ class PostsViewModel {
     }
     
     func toggleFavorite(post: Post) {
-        context.performAndWait {
+        context.perform {[weak self] in
+            guard let self else { return }
             post.isFavorite = !post.isFavorite
             do {
-                try context.save()
-                fetchPostsFromCoreData()
+                try self.context.save()
+                self.fetchPostsFromCoreData()
             } catch {
                 print("Failed to update favorite status: \(error)")
             }
