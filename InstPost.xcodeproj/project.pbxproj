@@ -25,7 +25,6 @@
 		565A7D752C36C45B008DF4BC /* APIServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D742C36C45B008DF4BC /* APIServiceFactory.swift */; };
 		56AEFB6D2C38225A001E7CD5 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */; };
 		56AEFB6E2C38225A001E7CD5 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */; };
-		56D848D22C3EE5D3009BBE9E /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D848D12C3EE5D3009BBE9E /* PostRepository.swift */; };
 		56EBD3A42C3526B500991D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A32C3526B500991D06 /* AppDelegate.swift */; };
 		56EBD3A62C3526B500991D06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A52C3526B500991D06 /* SceneDelegate.swift */; };
 		56EBD3A82C3526B500991D06 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A72C3526B500991D06 /* LoginViewController.swift */; };
@@ -36,8 +35,6 @@
 		56EBD3BE2C3526B800991D06 /* InstPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3BD2C3526B800991D06 /* InstPostTests.swift */; };
 		56EBD3C82C3526B800991D06 /* InstPostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3C72C3526B800991D06 /* InstPostUITests.swift */; };
 		56EBD3CA2C3526B800991D06 /* InstPostUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3C92C3526B800991D06 /* InstPostUITestsLaunchTests.swift */; };
-		56EBD3DA2C35358F00991D06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3D92C35358F00991D06 /* User.swift */; };
-		56EBD3DB2C35358F00991D06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3D92C35358F00991D06 /* User.swift */; };
 		56EBD3DD2C3535A400991D06 /* LoginViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3DC2C3535A400991D06 /* LoginViewModal.swift */; };
 		56EBD3E02C35360400991D06 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3DF2C35360400991D06 /* PostsViewController.swift */; };
 		56EBD3E12C35360400991D06 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3DF2C35360400991D06 /* PostsViewController.swift */; };
@@ -100,7 +97,6 @@
 		565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModal.swift; sourceTree = "<group>"; };
 		565A7D712C36B72F008DF4BC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		565A7D742C36C45B008DF4BC /* APIServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceFactory.swift; sourceTree = "<group>"; };
-		56D848D12C3EE5D3009BBE9E /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		56EBD3A02C3526B500991D06 /* InstPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EBD3A32C3526B500991D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EBD3A52C3526B500991D06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +111,6 @@
 		56EBD3C32C3526B800991D06 /* InstPostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstPostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EBD3C72C3526B800991D06 /* InstPostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstPostUITests.swift; sourceTree = "<group>"; };
 		56EBD3C92C3526B800991D06 /* InstPostUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstPostUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		56EBD3D92C35358F00991D06 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56EBD3DC2C3535A400991D06 /* LoginViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModal.swift; sourceTree = "<group>"; };
 		56EBD3DF2C35360400991D06 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		56EBD3E22C35361200991D06 /* PostsViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModal.swift; sourceTree = "<group>"; };
@@ -198,14 +193,6 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		56D848D02C3EE5BD009BBE9E /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				56D848D12C3EE5D3009BBE9E /* PostRepository.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
 		56EBD3972C3526B500991D06 = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +222,6 @@
 				56EBD3A52C3526B500991D06 /* SceneDelegate.swift */,
 				56EBD3FC2C355D2900991D06 /* BaseViewController.swift */,
 				56EBD3FF2C35648A00991D06 /* PostTabbarController.swift */,
-				56D848D02C3EE5BD009BBE9E /* Database */,
 				565A7D732C36C43E008DF4BC /* Factory */,
 				565A7D6A2C366DB6008DF4BC /* CoreDataEntities */,
 				56EBD40F2C35723300991D06 /* PostTableViewCell */,
@@ -318,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				56EBD3E52C35363100991D06 /* PostEntity.swift */,
-				56EBD3D92C35358F00991D06 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -620,13 +605,11 @@
 				56EBD3FD2C355D2900991D06 /* BaseViewController.swift in Sources */,
 				56EBD3A42C3526B500991D06 /* AppDelegate.swift in Sources */,
 				56EBD3E32C35361200991D06 /* PostsViewModal.swift in Sources */,
-				56EBD3DA2C35358F00991D06 /* User.swift in Sources */,
 				56EBD3F02C354D6300991D06 /* UIColor+Extensions.swift in Sources */,
 				56EBD4032C356B6B00991D06 /* PostsTableViewCell.swift in Sources */,
 				56EBD3ED2C353C4A00991D06 /* UITextfield+Extensions.swift in Sources */,
 				565A7D6D2C366DC8008DF4BC /* Post+CoreDataProperties.swift in Sources */,
 				56EBD4002C35648A00991D06 /* PostTabbarController.swift in Sources */,
-				56D848D22C3EE5D3009BBE9E /* PostRepository.swift in Sources */,
 				56EBD3E62C35363100991D06 /* PostEntity.swift in Sources */,
 				56EBD3DD2C3535A400991D06 /* LoginViewModal.swift in Sources */,
 				565A7D722C36B72F008DF4BC /* String+Extensions.swift in Sources */,
@@ -654,7 +637,6 @@
 				563400692C37D45000BDF925 /* LoginViewModal.swift in Sources */,
 				56EBD3E12C35360400991D06 /* PostsViewController.swift in Sources */,
 				5634006E2C37F7DC00BDF925 /* PostsViewModelTests.swift in Sources */,
-				56EBD3DB2C35358F00991D06 /* User.swift in Sources */,
 				56EBD40B2C3570DB00991D06 /* URLSessionAPIService.swift in Sources */,
 				56EBD3E72C35363100991D06 /* PostEntity.swift in Sources */,
 				56EBD3EE2C353C4A00991D06 /* UITextfield+Extensions.swift in Sources */,

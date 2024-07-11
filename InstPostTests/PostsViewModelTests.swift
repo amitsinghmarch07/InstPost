@@ -72,8 +72,5 @@ class PostsViewModelTests: XCTestCase {
         XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 0) as? InstPost.Post)?.title, "Post 1");
         XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 1) as? InstPost.Post)?.id, 2);
         XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 1) as? InstPost.Post)?.title, "Post 2");
-
     }
-    
-    // Additional tests can go here
 }

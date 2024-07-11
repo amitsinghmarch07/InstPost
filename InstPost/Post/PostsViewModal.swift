@@ -19,7 +19,6 @@ class PostsViewModel {
     private let disposeBag = DisposeBag()
     private let context: NSManagedObjectContext
     var apiService: APIService = APIServiceFactory.getApiService()
-    
     let reloadTableView = PublishSubject<Bool>();
     
     init(context: NSManagedObjectContext = CoreDataContextFactory.getContext(),

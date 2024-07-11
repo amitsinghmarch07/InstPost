@@ -11,7 +11,6 @@ extension UILabel {
     func styleTitleLabel() {
         // Set the primary text color
         textColor = .customPrimaryTextColor
-        
         // Optionally set other label properties like font, alignment, etc.
         font = UIFont.systemFont(ofSize: 25, weight: .bold)
         textAlignment = .center

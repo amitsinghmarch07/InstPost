@@ -66,8 +66,6 @@ class PostsViewController: BaseViewController {
         reloadTableViewObserver()
         configureTableView()
         tableViewDelegateMethods()
-        
-        
         handleTabbarDidSelect()
     }
 }
