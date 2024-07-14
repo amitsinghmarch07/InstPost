@@ -30,7 +30,7 @@ class PostsViewModel {
     }
     
     private func savePosts(posts: [PostEntity]) {
-        self.database.save(posts: [posts.first!])
+        self.database.save(posts: posts)
             .subscribe(onCompleted: fetchPostsFromDatabase, onError: updateError)
             .disposed(by: disposeBag)
     }

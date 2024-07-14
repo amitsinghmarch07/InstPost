@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PostEntity: NSObject, Codable {
+class PostEntity: Codable {
     var id: Int
     var title: String
     var body: String
