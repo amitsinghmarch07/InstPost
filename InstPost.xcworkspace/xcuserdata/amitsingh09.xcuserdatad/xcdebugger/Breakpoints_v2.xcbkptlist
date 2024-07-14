@@ -7,17 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4B866692-467A-4A6A-938E-A77BB2B1DC01"
+            uuid = "478893E3-4033-48BB-A93B-F3287DF5E556"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InstPost/Post/PostsViewController.swift"
+            filePath = "InstPost/Post/PostsViewModal.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "fetchPostsFromDatabase()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "478893E3-4033-48BB-A93B-F3287DF5E556 - e4ac388e726c66d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;InstPost.PostEntity&gt;) -&gt; () in InstPost.PostsViewModel.fetchPostsFromDatabase() -&gt; ()"
+                  moduleName = "InstPost"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Post/PostsViewModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "478893E3-4033-48BB-A93B-F3287DF5E556 - 5036a20d39ab95ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;InstPostTests.PostEntity&gt;) -&gt; () in InstPostTests.PostsViewModel.fetchPostsFromDatabase() -&gt; ()"
+                  moduleName = "InstPostTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Post/PostsViewModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

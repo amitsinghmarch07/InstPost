@@ -12,100 +12,57 @@ import CoreData
 class PostsViewModel {
     
     private let updateToCoreDataSubject = PublishSubject<[Post]>()
-    private let postsSubject = BehaviorSubject<[Post]>(value: [])
-    var posts: Driver<[Post]> {
+    private let postsSubject = BehaviorSubject<[PostEntity]>(value: [])
+    var posts: Driver<[PostEntity]> {
         return postsSubject.asDriver(onErrorJustReturn: [])
     }
     private let disposeBag = DisposeBag()
-    private let context: NSManagedObjectContext
+    private let database: PostRepository
     var apiService: APIService = APIServiceFactory.getApiService()
     let reloadTableView = PublishSubject<Bool>();
     
-    init(context: NSManagedObjectContext = CoreDataContextFactory.getContext(),
+    init(database: PostRepository = DatabaseFactory.getDatabase(),
          apiService: APIService = APIServiceFactory.getApiService()
     ) {
-        self.context = context
+        self.database = database
         self.apiService = apiService
-        subscribeCoreDataSubject()
-        fetchPostsFromAPIAndSaveToCoreData()
+        fetchPostsFromAPI()
     }
     
-    func fetchPostsFromAPIAndSaveToCoreData() {
+    private func savePosts(posts: [PostEntity]) {
+        self.database.save(posts: [posts.first!])
+            .subscribe(onCompleted: fetchPostsFromDatabase, onError: updateError)
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchPostsFromAPI() {
         self.apiService.fetchPosts()
             .asObservable()
-            .subscribe {[unowned self] posts in
-                let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-                
-                // Clear existing data
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
-                do {
-                    try self.context.execute(deleteRequest)
-                    try self.context.save()
-                } catch {
-                    self.updateToCoreDataSubject.onError(error)
-                }
-                
-                // Save new data
-                for postModel in posts {
-                    guard let model = context.persistentStoreCoordinator?.managedObjectModel,
-                          let post = model.entitiesByName["Post"]else {
-                        fatalError("Managed object model not found")
-                    }
-                    
-                    let entity = Post(entity: post, insertInto: context)
-                    entity.id = Int32(postModel.id)
-                    entity.title = postModel.title
-                    entity.body = postModel.body
-                    entity.isFavorite = false
-                }
-                
-                do {
-                    try self.context.save()
-                    let savedPosts = try self.context.fetch(fetchRequest)
-                    self.updateToCoreDataSubject.onNext(savedPosts)
-                    self.updateToCoreDataSubject.onCompleted()
-                } catch {
-                    self.updateToCoreDataSubject.onError(error)
-                }
-                
-            } onError: {[unowned self] error in
-                self.updateToCoreDataSubject.onError(error)
-            }
+            .subscribe(onNext: savePosts, onError: updateError)
             .disposed(by: disposeBag)
     }
     
-    private func subscribeCoreDataSubject() {
-        updateToCoreDataSubject
-            .subscribe(onNext: {[weak self] posts in
-                self?.postsSubject.onNext(posts)
-            }, onError: {[weak self] error in
-                self?.fetchPostsFromCoreData()
-            })
+    func fetchPostsFromDatabase() {
+        self.database.fetchPosts()
+            .asObservable()
+            .subscribe(onNext: {[weak self] postEntities in
+                self?.postsSubject.onNext(postEntities)
+            }, onError: updateError)
             .disposed(by: disposeBag)
     }
     
-    func fetchPostsFromCoreData() {
-        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        do {
-            let posts = try context.fetch(fetchRequest)
-            postsSubject.onNext(posts)
-        } catch {
-            postsSubject.onError(error)
-        }
+    func toggleFavorite(post: PostEntity) {
+        post.isFavorite = !post.isFavorite
+        self.database.save(post: post)
+            .subscribe(onCompleted: fetchPostsFromDatabase, onError: updateError)
+            .disposed(by: disposeBag)
     }
     
-    func toggleFavorite(post: Post) {
-        context.perform {[weak self] in
-            guard let self else { return }
-            post.isFavorite = !post.isFavorite
-            do {
-                try self.context.save()
-                self.fetchPostsFromCoreData()
-            } catch {
-                print("Failed to update favorite status: \(error)")
-            }
-        }
+    private func updateSuccess() {
+        
+    }
+    
+    private func updateError(error: Error) {
+        
     }
 }

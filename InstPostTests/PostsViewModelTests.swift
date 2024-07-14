@@ -40,7 +40,9 @@ class PostsViewModelTests: XCTestCase {
         let apiService = MockAPIService()
         
         // ViewModel setup
-        viewModel = PostsViewModel(context: mockContext, apiService: apiService)
+        let coreDataDatabase = DatabaseFactory.getDatabase(managedObjectContext: mockContext)
+        viewModel = PostsViewModel(database: coreDataDatabase,
+                                   apiService: apiService)
         
         // RxTest setup
         scheduler = TestScheduler(initialClock: 0)
@@ -57,7 +59,7 @@ class PostsViewModelTests: XCTestCase {
     
     func testFetchPostsFromAPIAndSaveToCoreData() {
         // Create an observer to capture the emitted events
-        let observer = scheduler.createObserver([Post].self)
+        let observer = scheduler.createObserver([PostEntity].self)
         
         // Subscribe the observer to the posts observable
         viewModel.posts.drive(observer).disposed(by: disposeBag)

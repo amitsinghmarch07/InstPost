@@ -23,8 +23,8 @@ class PostsViewController: BaseViewController {
     fileprivate func tableViewDelegateMethods() {
         viewModel.posts
             .drive(tableView.rx.items(cellIdentifier: "PostsTableViewCell", cellType: PostsTableViewCell.self)) { index, model, cell in
-                cell.postTitle?.text = model.title?.capitalizingFirstLetter()
-                cell.postDescription.text = model.body?.capitalizingFirstLetter()
+                cell.postTitle?.text = model.title.capitalizingFirstLetter()
+                cell.postDescription.text = model.body.capitalizingFirstLetter()
                 cell.favouriteImageView.image = model.isFavorite ?  UIImage(systemName: "star.fill") : UIImage(systemName: "star")
                 cell.favouriteImageView.tintColor = .customCoral
                 // Set other cell properties
@@ -32,7 +32,7 @@ class PostsViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         // Handle post selection
-        tableView.rx.modelSelected(Post.self)
+        tableView.rx.modelSelected(PostEntity.self)
             .subscribe(onNext: { [weak self] post in
                 self?.viewModel.toggleFavorite(post: post)
             })
@@ -45,7 +45,7 @@ class PostsViewController: BaseViewController {
                 .subscribe(onNext: { [weak self] viewController in
                     // Check if the selected view controller is the current view controller
                     if viewController == self {
-                        self?.viewModel.fetchPostsFromCoreData()
+                        self?.viewModel.fetchPostsFromDatabase()
                     }
                 })
                 .disposed(by: disposeBag)
