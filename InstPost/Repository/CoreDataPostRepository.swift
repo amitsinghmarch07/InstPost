@@ -22,14 +22,13 @@ class CoreDataPostRepository: PostRepository {
         self.context = context
     }
     
-    private func createDefaultFetchRequest(with predicate: NSPredicate? = nil) -> NSFetchRequest<Post> {
+    private func createDefaultFetchRequest() -> NSFetchRequest<Post> {
         let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        fetchRequest.predicate = predicate
         return fetchRequest
     }
     
-    func fetchPosts() -> Single<[PostEntity]> {
+    func fetchPosts(with predicate: String? = nil) -> Single<[PostEntity]> {
         return Single.create {[weak self] observer in
             let disposable = Disposables.create()
             guard let self else {
@@ -37,7 +36,12 @@ class CoreDataPostRepository: PostRepository {
                 return disposable
             }
 
+
             let fetchRequest = createDefaultFetchRequest()
+            
+            if let predicate {
+                fetchRequest.predicate = NSPredicate(format:predicate)
+            }
             
             do {
                 let post = try self.context.fetch(fetchRequest)
@@ -57,7 +61,8 @@ class CoreDataPostRepository: PostRepository {
                 return disposable
             }
             
-            let fetchRequest = createDefaultFetchRequest(with:NSPredicate(format: "id == \(id)"))
+            let fetchRequest = createDefaultFetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == \(id)")
             
             do {
                 let post = try self.context.fetch(fetchRequest)

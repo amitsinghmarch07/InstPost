@@ -16,6 +16,11 @@ class PostsViewController: BaseViewController {
     private let viewModel = PostsViewModel()
     private let disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchPostsFromDatabase()
+    }
+    
     fileprivate func configureTableView() {
         let nib = UINib(nibName: "PostsTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostsTableViewCell")
@@ -40,23 +45,10 @@ class PostsViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func handleTabbarDidSelect() {
-        if let tabBarController = self.tabBarController {
-            tabBarController.rx.didSelect
-                .subscribe(onNext: { [weak self] viewController in
-                    // Check if the selected view controller is the current view controller
-                    if viewController == self {
-                        self?.viewModel.fetchPostsFromDatabase()
-                    }
-                })
-                .disposed(by: disposeBag)
-        }
-    }
-    
     fileprivate func reloadTableViewObserver() {
         viewModel.reloadTableView
-            .subscribe(onNext:{[unowned self] _ in
-                self.tableView.reloadData()
+            .subscribe(onNext:{[weak self] _ in
+                self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -81,7 +73,6 @@ class PostsViewController: BaseViewController {
         reloadTableViewObserver()
         configureTableView()
         tableViewDelegateMethods()
-        handleTabbarDidSelect()
         subscribeToEmptyViewHiddenObserver()
     }
 }

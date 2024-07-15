@@ -111,7 +111,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="iZi-Jz-2mn" firstAttribute="centerY" secondItem="LSz-Z0-PAA" secondAttribute="centerY" id="GhI-ve-Ykx"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iZi-Jz-2mn" secondAttribute="trailing" constant="16" id="RE1-Jt-wdG"/>

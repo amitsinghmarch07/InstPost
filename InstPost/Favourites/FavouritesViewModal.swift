@@ -10,43 +10,47 @@ import RxCocoa
 import CoreData
 
 class FavouritesViewModal {
-    
-    private let favoritePostsSubject = BehaviorSubject<[Post]>(value: [])
-    var favoritePosts: Driver<[Post]> {
+    private let disposeBag = DisposeBag()
+    private let favoritePostsSubject = BehaviorSubject<[PostEntity]>(value: [])
+    var favoritePosts: Driver<[PostEntity]> {
         return favoritePostsSubject.asDriver(onErrorJustReturn: [])
     }
     let isEmptyViewHidden = BehaviorRelay<Bool>(value: true)
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    private let database: PostRepository
     let reloadTableView = PublishSubject<Bool>();
     
-    init() {
-        loadFavoritePosts()
+    init(database: PostRepository = DatabaseFactory.getDatabase()) {
+        self.database = database
     }
     
     func loadFavoritePosts() {
-        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "isFavorite == true")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        do {
-            let posts = try context.fetch(fetchRequest)
-            isEmptyViewHidden.accept(posts.count != 0)
-            favoritePostsSubject.onNext(posts)
-        } catch {
-            isEmptyViewHidden.accept(false)
-        }
+        self.database.fetchPosts(with: "isFavorite == true")
+            .asObservable()
+            .subscribe(onNext: {[weak self] postEntities in
+                self?.isEmptyViewHidden.accept(postEntities.count != 0)
+                self?.favoritePostsSubject.onNext(postEntities)
+            }, onError: {[weak self] _ in
+                self?.isEmptyViewHidden.accept(false)
+            })
+            .disposed(by: disposeBag)
     }
     
-    func toggleFavorite(post: Post) {
-        context.perform {[weak self] in
-            guard let self else { return }
-            post.isFavorite = !post.isFavorite
-            do {
-                try self.context.save()
-                self.loadFavoritePosts()
-            } catch {
-                print("Failed to update favorite status: \(error)")
-            }
-        }
+    func toggleFavorite(post: PostEntity) {
+        var newPost = post
+        
+        self.database.save(post: newPost.toggleFavorite())
+            .subscribe(onCompleted: {[weak self] in
+                    guard var posts = try? self?.favoritePostsSubject.value() else {
+                        return
+                    }
+                    posts.removeAll(where: {$0 == post})
+                    self?.favoritePostsSubject.onNext(posts)
+            }, onError: updateError)
+            .disposed(by: disposeBag)
+    }
+
+    private func updateError(error: Error) {
+        self.isEmptyViewHidden.accept(false)
     }
 }

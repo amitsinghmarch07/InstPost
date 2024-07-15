@@ -48,7 +48,7 @@ class PostsViewModel {
     }
     
     func fetchPostsFromDatabase() {
-        self.database.fetchPosts()
+        self.database.fetchPosts(with: nil)
             .asObservable()
             .subscribe(onNext: {[weak self] postEntities in
                 self?.isEmptyViewHidden.accept(postEntities.count != 0)
@@ -59,8 +59,16 @@ class PostsViewModel {
     
     func toggleFavorite(post: PostEntity) {
         var newPost = post
+        
         self.database.save(post: newPost.toggleFavorite())
-            .subscribe(onCompleted: fetchPostsFromDatabase, onError: updateError)
+            .subscribe(onCompleted: {[weak self] in
+                    guard var posts = try? self?.postsSubject.value(),
+                          let index = posts.firstIndex(of: post) else {
+                        return
+                    }
+                    posts[index].isFavorite = !posts[index].isFavorite
+                    self?.postsSubject.onNext(posts)
+            }, onError: updateError)
             .disposed(by: disposeBag)
     }
 

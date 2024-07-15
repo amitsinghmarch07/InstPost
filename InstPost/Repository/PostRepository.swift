@@ -8,7 +8,7 @@
 import RxSwift
 
 protocol PostRepository {
-    func fetchPosts()-> Single<[PostEntity]>
+    func fetchPosts(with predicate: String?)-> Single<[PostEntity]>
     func fetchPost(withId id: Int)-> Single<PostEntity?>
     func save(posts: [PostEntity])-> Completable
     func save(post: PostEntity)-> Completable
