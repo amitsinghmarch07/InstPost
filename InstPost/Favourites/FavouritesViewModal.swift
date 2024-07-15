@@ -45,6 +45,7 @@ class FavouritesViewModal {
                         return
                     }
                     posts.removeAll(where: {$0 == post})
+                    self?.isEmptyViewHidden.accept(posts.count != 0)
                     self?.favoritePostsSubject.onNext(posts)
             }, onError: updateError)
             .disposed(by: disposeBag)
