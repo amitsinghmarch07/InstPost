@@ -15,6 +15,7 @@ class FavouritesViewModal {
     var favoritePosts: Driver<[Post]> {
         return favoritePostsSubject.asDriver(onErrorJustReturn: [])
     }
+    let isEmptyViewHidden = BehaviorRelay<Bool>(value: true)
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let reloadTableView = PublishSubject<Bool>();
@@ -29,9 +30,10 @@ class FavouritesViewModal {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         do {
             let posts = try context.fetch(fetchRequest)
+            isEmptyViewHidden.accept(posts.count != 0)
             favoritePostsSubject.onNext(posts)
         } catch {
-            favoritePostsSubject.onError(error)
+            isEmptyViewHidden.accept(false)
         }
     }
     

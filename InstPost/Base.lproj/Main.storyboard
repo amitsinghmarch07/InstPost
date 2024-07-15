@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ALn-ZA-Qcm">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -100,6 +101,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSz-Z0-PAA">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong. Please try again later." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-Jz-2mn">
+                                        <rect key="frame" x="23.333333333333343" y="345" width="346.66666666666663" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="iZi-Jz-2mn" firstAttribute="centerY" secondItem="LSz-Z0-PAA" secondAttribute="centerY" id="GhI-ve-Ykx"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iZi-Jz-2mn" secondAttribute="trailing" constant="16" id="RE1-Jt-wdG"/>
+                                    <constraint firstItem="iZi-Jz-2mn" firstAttribute="centerX" secondItem="LSz-Z0-PAA" secondAttribute="centerX" id="sdq-qO-IwE"/>
+                                    <constraint firstItem="iZi-Jz-2mn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LSz-Z0-PAA" secondAttribute="leading" constant="16" id="wZl-yZ-Jg0"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pyf-E0-QXC">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,8 +127,12 @@
                         <viewLayoutGuide key="safeArea" id="YAx-Zr-c0f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LSz-Z0-PAA" firstAttribute="bottom" secondItem="YAx-Zr-c0f" secondAttribute="bottom" id="8am-yG-4ub"/>
+                            <constraint firstItem="LSz-Z0-PAA" firstAttribute="top" secondItem="YAx-Zr-c0f" secondAttribute="top" id="Ei4-gj-oTz"/>
                             <constraint firstItem="YAx-Zr-c0f" firstAttribute="bottom" secondItem="Pyf-E0-QXC" secondAttribute="bottom" id="Oxb-b9-Lhc"/>
                             <constraint firstItem="Pyf-E0-QXC" firstAttribute="leading" secondItem="YAx-Zr-c0f" secondAttribute="leading" id="W4h-JI-eeT"/>
+                            <constraint firstItem="LSz-Z0-PAA" firstAttribute="trailing" secondItem="YAx-Zr-c0f" secondAttribute="trailing" id="YXa-Zz-YLB"/>
+                            <constraint firstItem="LSz-Z0-PAA" firstAttribute="leading" secondItem="YAx-Zr-c0f" secondAttribute="leading" id="i2h-JQ-6Oe"/>
                             <constraint firstItem="YAx-Zr-c0f" firstAttribute="trailing" secondItem="Pyf-E0-QXC" secondAttribute="trailing" id="ibO-Ya-TGX"/>
                             <constraint firstItem="Pyf-E0-QXC" firstAttribute="top" secondItem="YAx-Zr-c0f" secondAttribute="top" id="lBM-ei-r3L"/>
                         </constraints>
@@ -118,12 +141,13 @@
                         <imageReference key="image" image="book.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="emptyView" destination="LSz-Z0-PAA" id="wlD-qh-iwR"/>
                         <outlet property="tableView" destination="Pyf-E0-QXC" id="TyI-Qy-VPn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qzt-h8-N2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1773" y="-756"/>
+            <point key="canvasLocation" x="-1773.2824427480916" y="-756.33802816901414"/>
         </scene>
         <!--PostsViewController-->
         <scene sceneID="LqN-ky-FZN">
@@ -133,6 +157,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MME-Oe-eOg">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong. Please try again later." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXc-dM-Bwm">
+                                        <rect key="frame" x="23.333333333333343" y="345" width="346.66666666666663" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZXc-dM-Bwm" firstAttribute="centerX" secondItem="MME-Oe-eOg" secondAttribute="centerX" id="6oH-fO-DR5"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZXc-dM-Bwm" secondAttribute="trailing" constant="16" id="gKQ-1n-cEt"/>
+                                    <constraint firstItem="ZXc-dM-Bwm" firstAttribute="centerY" secondItem="MME-Oe-eOg" secondAttribute="centerY" id="lo3-aw-hcU"/>
+                                    <constraint firstItem="ZXc-dM-Bwm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MME-Oe-eOg" secondAttribute="leading" constant="16" id="v7G-6v-szR"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uTb-7G-cna">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,15 +184,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uTb-7G-cna" firstAttribute="leading" secondItem="iGP-hu-s3g" secondAttribute="leading" id="6Hp-gB-ZCK"/>
+                            <constraint firstItem="iGP-hu-s3g" firstAttribute="bottom" secondItem="MME-Oe-eOg" secondAttribute="bottom" id="A06-DG-ZgB"/>
                             <constraint firstItem="uTb-7G-cna" firstAttribute="top" secondItem="iGP-hu-s3g" secondAttribute="top" id="A4s-fd-yKb"/>
                             <constraint firstItem="iGP-hu-s3g" firstAttribute="bottom" secondItem="uTb-7G-cna" secondAttribute="bottom" id="DX4-br-x51"/>
                             <constraint firstItem="iGP-hu-s3g" firstAttribute="trailing" secondItem="uTb-7G-cna" secondAttribute="trailing" id="GP3-7I-StA"/>
+                            <constraint firstItem="MME-Oe-eOg" firstAttribute="top" secondItem="iGP-hu-s3g" secondAttribute="top" id="bVH-1f-G6c"/>
+                            <constraint firstItem="MME-Oe-eOg" firstAttribute="leading" secondItem="iGP-hu-s3g" secondAttribute="leading" id="bgr-Sb-Jiz"/>
+                            <constraint firstItem="iGP-hu-s3g" firstAttribute="trailing" secondItem="MME-Oe-eOg" secondAttribute="trailing" id="wFJ-jK-LtS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Posts" id="FpI-p2-mB0">
                         <imageReference key="image" image="book" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="emptyView" destination="MME-Oe-eOg" id="eFu-CS-YMQ"/>
                         <outlet property="tableView" destination="uTb-7G-cna" id="NHG-LL-dHn"/>
                     </connections>
                 </viewController>

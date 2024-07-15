@@ -11,15 +11,17 @@ import CoreData
 
 class PostsViewModel {
     
+    private let disposeBag = DisposeBag()
     private let updateToCoreDataSubject = PublishSubject<[Post]>()
     private let postsSubject = BehaviorSubject<[PostEntity]>(value: [])
+    let isEmptyViewHidden = BehaviorRelay<Bool>(value: true)
+    let reloadTableView = PublishSubject<Bool>();
     var posts: Driver<[PostEntity]> {
         return postsSubject.asDriver(onErrorJustReturn: [])
     }
-    private let disposeBag = DisposeBag()
+    
     private let database: PostRepository
-    var apiService: APIService = APIServiceFactory.getApiService()
-    let reloadTableView = PublishSubject<Bool>();
+    private var apiService: APIService = APIServiceFactory.getApiService()
     
     init(database: PostRepository = DatabaseFactory.getDatabase(),
          apiService: APIService = APIServiceFactory.getApiService()
@@ -38,7 +40,10 @@ class PostsViewModel {
     func fetchPostsFromAPI() {
         self.apiService.fetchPosts()
             .asObservable()
-            .subscribe(onNext: savePosts, onError: updateError)
+            .subscribe(onNext: savePosts,
+                       onError: {[weak self] _ in
+                self?.fetchPostsFromDatabase()
+            })
             .disposed(by: disposeBag)
     }
     
@@ -46,6 +51,7 @@ class PostsViewModel {
         self.database.fetchPosts()
             .asObservable()
             .subscribe(onNext: {[weak self] postEntities in
+                self?.isEmptyViewHidden.accept(postEntities.count != 0)
                 self?.postsSubject.onNext(postEntities)
             }, onError: updateError)
             .disposed(by: disposeBag)
@@ -57,12 +63,8 @@ class PostsViewModel {
             .subscribe(onCompleted: fetchPostsFromDatabase, onError: updateError)
             .disposed(by: disposeBag)
     }
-    
-    private func updateSuccess() {
-        
-    }
-    
+
     private func updateError(error: Error) {
-        
+        self.isEmptyViewHidden.accept(false)
     }
 }

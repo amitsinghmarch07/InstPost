@@ -11,7 +11,8 @@ import RxCocoa
 
 class FavouritesViewController: BaseViewController {
     @IBOutlet private weak var tableView: UITableView!
-    
+    @IBOutlet weak private var emptyView: UIView!
+
     private let viewModel = FavouritesViewModal()
     private let disposeBag = DisposeBag()
     
@@ -59,6 +60,20 @@ class FavouritesViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    fileprivate func subscribeToEmptyViewHiddenObserver() {
+        viewModel
+            .isEmptyViewHidden
+            .map { !$0 }
+            .observe(on: MainScheduler.instance)
+            .bind(to: tableView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.isEmptyViewHidden
+            .observe(on: MainScheduler.instance)
+            .bind(to: emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,5 +81,6 @@ class FavouritesViewController: BaseViewController {
         observerTabbarTabSelection()
         tableViewReloadObserver()
         tableViewDelegateMethods()
+        subscribeToEmptyViewHiddenObserver()
     }
 }
