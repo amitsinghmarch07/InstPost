@@ -13,6 +13,21 @@ import CoreData
 
 @testable import InstPost
 
+class MockREpository: CoreDataPostRepository {
+    override func getPostEntity(from posts: [Post]) -> [PostEntity] {
+       return (posts as NSArray).compactMap { element in
+           
+           guard let post = element as? InstPost.Post else { return nil }
+           
+            return PostEntity(id: Int(post.id),
+                       title: post.title ?? "",
+                       body: post.body ?? "",
+                       isFavorite: post.isFavorite)
+
+        }
+    }
+}
+
 class PostsViewModelTests: XCTestCase {
     
     var viewModel: PostsViewModel!
@@ -40,7 +55,7 @@ class PostsViewModelTests: XCTestCase {
         let apiService = MockAPIService()
         
         // ViewModel setup
-        let coreDataDatabase = DatabaseFactory.getDatabase(managedObjectContext: mockContext)
+        let coreDataDatabase = MockREpository(context: mockContext)//DatabaseFactory.getDatabase(managedObjectContext: mockContext)
         viewModel = PostsViewModel(database: coreDataDatabase,
                                    apiService: apiService)
         
@@ -67,12 +82,15 @@ class PostsViewModelTests: XCTestCase {
         // Start the scheduler to begin the emission of events
         scheduler.start()
         
-        XCTAssertEqual(observer.events.count, 1)
-        XCTAssertEqual(observer.events[0].value.element?.count, 2)
-        // Assert that the actual events match the expected events
-        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 0) as? InstPost.Post)?.id, 1);
-        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 0) as? InstPost.Post)?.title, "Post 1");
-        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 1) as? InstPost.Post)?.id, 2);
-        XCTAssertEqual(((observer.events[0].value.element as? NSArray)?.object(at: 1) as? InstPost.Post)?.title, "Post 2");
+        let postEntities = [
+            PostEntity(id: 1, title: "Post 1", body: "Body 1", isFavorite: false),
+            PostEntity(id: 2, title: "Post 2", body: "Body 2", isFavorite: false)
+        ]
+        
+        let expectedEvents = [
+            Recorded.next(0,postEntities)
+        ]
+        
+        XCTAssertEqual(observer.events, expectedEvents)
     }
 }

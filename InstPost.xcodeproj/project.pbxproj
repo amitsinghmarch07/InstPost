@@ -41,7 +41,6 @@
 		56EBD3E32C35361200991D06 /* PostsViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E22C35361200991D06 /* PostsViewModal.swift */; };
 		56EBD3E42C35361200991D06 /* PostsViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E22C35361200991D06 /* PostsViewModal.swift */; };
 		56EBD3E62C35363100991D06 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E52C35363100991D06 /* PostEntity.swift */; };
-		56EBD3E72C35363100991D06 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E52C35363100991D06 /* PostEntity.swift */; };
 		56EBD3EA2C353C1600991D06 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E92C353C1600991D06 /* UIButton+Extensions.swift */; };
 		56EBD3EB2C353C1600991D06 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E92C353C1600991D06 /* UIButton+Extensions.swift */; };
 		56EBD3ED2C353C4A00991D06 /* UITextfield+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3EC2C353C4A00991D06 /* UITextfield+Extensions.swift */; };
@@ -68,6 +67,7 @@
 		56FE16CE2C436E9C00F3B709 /* CoreDataPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16CD2C436E9C00F3B709 /* CoreDataPostRepository.swift */; };
 		56FE16CF2C4419DD00F3B709 /* CoreDataPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16CD2C436E9C00F3B709 /* CoreDataPostRepository.swift */; };
 		56FE16D02C4419DD00F3B709 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16CA2C436CB800F3B709 /* PostRepository.swift */; };
+		56FE16D12C450CB900F3B709 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E52C35363100991D06 /* PostEntity.swift */; };
 		ADA58A39A71880F52E988036 /* Pods_InstPost_InstPostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AB3431317A13510AEB1CEE /* Pods_InstPost_InstPostUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -653,10 +653,10 @@
 				56EBD4042C356B6B00991D06 /* PostsTableViewCell.swift in Sources */,
 				56EBD40E2C3570FD00991D06 /* Constants.swift in Sources */,
 				563400692C37D45000BDF925 /* LoginViewModal.swift in Sources */,
+				56FE16D12C450CB900F3B709 /* PostEntity.swift in Sources */,
 				56EBD3E12C35360400991D06 /* PostsViewController.swift in Sources */,
 				5634006E2C37F7DC00BDF925 /* PostsViewModelTests.swift in Sources */,
 				56EBD40B2C3570DB00991D06 /* URLSessionAPIService.swift in Sources */,
-				56EBD3E72C35363100991D06 /* PostEntity.swift in Sources */,
 				56EBD3EE2C353C4A00991D06 /* UITextfield+Extensions.swift in Sources */,
 				56EBD3F42C354D7500991D06 /* UILabel+Extensions.swift in Sources */,
 				56FE16CF2C4419DD00F3B709 /* CoreDataPostRepository.swift in Sources */,

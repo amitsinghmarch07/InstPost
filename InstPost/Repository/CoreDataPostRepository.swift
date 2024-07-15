@@ -88,8 +88,9 @@ class CoreDataPostRepository: PostRepository {
         }
     }
     
-    private func getPostEntity(from posts: [Post]) -> [PostEntity] {
-        posts.map {
+    func getPostEntity(from posts: [Post]) -> [PostEntity] {
+        posts
+            .map {
                 PostEntity(id: Int($0.id),
                            title: $0.title ?? "",
                            body: $0.body ?? "",

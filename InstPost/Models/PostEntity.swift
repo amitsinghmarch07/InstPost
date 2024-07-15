@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PostEntity: Codable {
+struct PostEntity: Codable {
     var id: Int
     var title: String
     var body: String
@@ -20,7 +20,7 @@ class PostEntity: Codable {
         case isFavorite
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         title = try container.decodeIfPresent(String.self, forKey: .title) ?? "Unknown"
@@ -34,5 +34,16 @@ class PostEntity: Codable {
         self.title = title
         self.body = body
         self.isFavorite = isFavorite
+    }
+    
+    mutating func toggleFavorite()-> Self {
+        self.isFavorite = !self.isFavorite
+        return self
+    }
+}
+
+extension PostEntity : Equatable {
+    static func == (lhs: PostEntity, rhs: PostEntity) -> Bool {
+        lhs.id == rhs.id
     }
 }

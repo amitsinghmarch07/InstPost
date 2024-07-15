@@ -52,8 +52,8 @@ class PostsViewModel {
     }
     
     func toggleFavorite(post: PostEntity) {
-        post.isFavorite = !post.isFavorite
-        self.database.save(post: post)
+        var newPost = post
+        self.database.save(post: newPost.toggleFavorite())
             .subscribe(onCompleted: fetchPostsFromDatabase, onError: updateError)
             .disposed(by: disposeBag)
     }
