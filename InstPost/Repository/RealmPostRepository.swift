@@ -39,6 +39,7 @@ class RealmPostRepository: PostRepository {
             }
             
             var posts = realm.objects(PostRealm.self)
+                .sorted(byKeyPath: "id")
             
             if let predicate = predicate {
                 posts = posts.filter(predicate)
