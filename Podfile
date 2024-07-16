@@ -8,6 +8,8 @@ target 'InstPost' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'RealmSwift', '10.49'
+  pod 'SVProgressHUD'
 
   target 'InstPostTests' do
     inherit! :search_paths

@@ -7,49 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "478893E3-4033-48BB-A93B-F3287DF5E556"
+            uuid = "B8892D6B-F04D-409C-A8ED-E3932CFBD11A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InstPost/Post/PostsViewModal.swift"
+            filePath = "InstPost/Favourites/FavouritesViewModal.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "fetchPostsFromDatabase()"
+            landmarkName = "toggleFavorite(post:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "478893E3-4033-48BB-A93B-F3287DF5E556 - e4ac388e726c66d5"
+                  uuid = "B8892D6B-F04D-409C-A8ED-E3932CFBD11A - 5f934e6aecbcdca1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;InstPost.PostEntity&gt;) -&gt; () in InstPost.PostsViewModel.fetchPostsFromDatabase() -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in InstPost.FavouritesViewModal.toggleFavorite(post: InstPost.PostEntity) -&gt; ()"
                   moduleName = "InstPost"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Post/PostsViewModal.swift"
+                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Favourites/FavouritesViewModal.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "332">
                </Location>
                <Location
-                  uuid = "478893E3-4033-48BB-A93B-F3287DF5E556 - 5036a20d39ab95ff"
+                  uuid = "B8892D6B-F04D-409C-A8ED-E3932CFBD11A - 5f934e6aecbcdca1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;InstPostTests.PostEntity&gt;) -&gt; () in InstPostTests.PostsViewModel.fetchPostsFromDatabase() -&gt; ()"
-                  moduleName = "InstPostTests"
+                  symbolName = "closure #1 () -&gt; () in InstPost.FavouritesViewModal.toggleFavorite(post: InstPost.PostEntity) -&gt; ()"
+                  moduleName = "InstPost"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Post/PostsViewModal.swift"
+                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Favourites/FavouritesViewModal.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "480">
+               </Location>
+               <Location
+                  uuid = "B8892D6B-F04D-409C-A8ED-E3932CFBD11A - 5f934e6aecbcdcc2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in InstPost.FavouritesViewModal.toggleFavorite(post: InstPost.PostEntity) -&gt; ()"
+                  moduleName = "InstPost"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amitsingh09/Desktop/Assignment%20iOS-du/InstPost/InstPost/InstPost/Favourites/FavouritesViewModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "804">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F7648466-700C-4586-A248-C2E7AB487833"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstPost/Post/PostsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2AA44B7E-A631-457F-B1D8-5355FD3AC385"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstPost/Favourites/FavouritesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
