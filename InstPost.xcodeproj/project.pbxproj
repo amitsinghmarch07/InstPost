@@ -202,6 +202,26 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		56C2A7032C4648D200E6322B /* ViewModals */ = {
+			isa = PBXGroup;
+			children = (
+				565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */,
+				56EBD3E22C35361200991D06 /* PostsViewModal.swift */,
+				56EBD3DC2C3535A400991D06 /* LoginViewModal.swift */,
+			);
+			path = ViewModals;
+			sourceTree = "<group>";
+		};
+		56C2A7042C4648DB00E6322B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				56EBD3A72C3526B500991D06 /* LoginViewController.swift */,
+				56EBD3F92C355D0400991D06 /* FavouritesViewController.swift */,
+				56EBD3DF2C35360400991D06 /* PostsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		56EBD3972C3526B500991D06 = {
 			isa = PBXGroup;
 			children = (
@@ -231,14 +251,13 @@
 				56EBD3A52C3526B500991D06 /* SceneDelegate.swift */,
 				56EBD3FC2C355D2900991D06 /* BaseViewController.swift */,
 				56EBD3FF2C35648A00991D06 /* PostTabbarController.swift */,
-				56FE16CC2C436E7300F3B709 /* Repository */,
 				565A7D732C36C43E008DF4BC /* Factory */,
+				56FE16CC2C436E7300F3B709 /* Repository */,
+				56C2A7042C4648DB00E6322B /* ViewControllers */,
+				56C2A7032C4648D200E6322B /* ViewModals */,
 				565A7D6A2C366DB6008DF4BC /* CoreDataEntities */,
 				56EBD40F2C35723300991D06 /* PostTableViewCell */,
-				56EBD3F62C35595F00991D06 /* Post */,
 				56EBD4082C3570C200991D06 /* Services */,
-				56EBD3F72C355C9200991D06 /* Favourites */,
-				56EBD3F52C35594C00991D06 /* Login */,
 				56EBD3F82C355CC900991D06 /* Models */,
 				56EBD3E82C353BFA00991D06 /* Utils */,
 				56EBD3A92C3526B500991D06 /* Main.storyboard */,
@@ -281,33 +300,6 @@
 				565A7D712C36B72F008DF4BC /* String+Extensions.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		56EBD3F52C35594C00991D06 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				56EBD3DC2C3535A400991D06 /* LoginViewModal.swift */,
-				56EBD3A72C3526B500991D06 /* LoginViewController.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		56EBD3F62C35595F00991D06 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				56EBD3DF2C35360400991D06 /* PostsViewController.swift */,
-				56EBD3E22C35361200991D06 /* PostsViewModal.swift */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		56EBD3F72C355C9200991D06 /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-				56EBD3F92C355D0400991D06 /* FavouritesViewController.swift */,
-				565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */,
-			);
-			path = Favourites;
 			sourceTree = "<group>";
 		};
 		56EBD3F82C355CC900991D06 /* Models */ = {
