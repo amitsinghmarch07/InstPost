@@ -12,5 +12,5 @@ protocol PostRepository {
     func fetchPost(withId id: Int)-> Single<PostEntity?>
     func save(posts: [PostEntity])-> Completable
     func save(post: PostEntity)-> Completable
-    func deleteAllPost()-> Completable
+    func deleteAllPosts()-> Completable
 }

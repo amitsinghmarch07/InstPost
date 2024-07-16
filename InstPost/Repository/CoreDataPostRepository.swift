@@ -144,7 +144,7 @@ class CoreDataPostRepository: PostRepository {
         try self.context.save()
     }
 
-    func deleteAllPost()-> Completable {
+    func deleteAllPosts()-> Completable {
         return Completable.create { [weak self] observer in
             
             let disposable = Disposables.create()

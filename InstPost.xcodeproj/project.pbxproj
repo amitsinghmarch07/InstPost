@@ -68,6 +68,8 @@
 		56FE16CF2C4419DD00F3B709 /* CoreDataPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16CD2C436E9C00F3B709 /* CoreDataPostRepository.swift */; };
 		56FE16D02C4419DD00F3B709 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16CA2C436CB800F3B709 /* PostRepository.swift */; };
 		56FE16D12C450CB900F3B709 /* PostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3E52C35363100991D06 /* PostEntity.swift */; };
+		56FE16D32C458B1700F3B709 /* RealmPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16D22C458B1700F3B709 /* RealmPostRepository.swift */; };
+		56FE16D42C458B1700F3B709 /* RealmPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE16D22C458B1700F3B709 /* RealmPostRepository.swift */; };
 		ADA58A39A71880F52E988036 /* Pods_InstPost_InstPostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AB3431317A13510AEB1CEE /* Pods_InstPost_InstPostUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,7 @@
 		56EBD40C2C3570FD00991D06 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56FE16CA2C436CB800F3B709 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		56FE16CD2C436E9C00F3B709 /* CoreDataPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPostRepository.swift; sourceTree = "<group>"; };
+		56FE16D22C458B1700F3B709 /* RealmPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPostRepository.swift; sourceTree = "<group>"; };
 		8473E75AECCD423696319F2A /* Pods_InstPostTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstPostTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC2D4D0E04742206409E8D6 /* Pods-InstPost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstPost.debug.xcconfig"; path = "Target Support Files/Pods-InstPost/Pods-InstPost.debug.xcconfig"; sourceTree = "<group>"; };
 		927C4FBA31074484241C83A2 /* Pods_InstPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +340,7 @@
 			children = (
 				56FE16CA2C436CB800F3B709 /* PostRepository.swift */,
 				56FE16CD2C436E9C00F3B709 /* CoreDataPostRepository.swift */,
+				56FE16D22C458B1700F3B709 /* RealmPostRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -610,6 +614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FE16D32C458B1700F3B709 /* RealmPostRepository.swift in Sources */,
 				565A7D702C368AD3008DF4BC /* FavouritesViewModal.swift in Sources */,
 				56EBD3A82C3526B500991D06 /* LoginViewController.swift in Sources */,
 				565A7D6E2C366DC8008DF4BC /* Post+CoreDataClass.swift in Sources */,
@@ -643,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FE16D42C458B1700F3B709 /* RealmPostRepository.swift in Sources */,
 				5634006A2C37D45300BDF925 /* LoginViewController.swift in Sources */,
 				563400682C37D44D00BDF925 /* FavouritesViewModal.swift in Sources */,
 				56AEFB6E2C38225A001E7CD5 /* Post+CoreDataClass.swift in Sources */,
