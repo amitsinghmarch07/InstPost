@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>DatabaseType</key>
-	<string>CoreData</string>
+	<string>realm</string>
 </dict>
 </plist>
