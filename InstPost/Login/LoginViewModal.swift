@@ -14,7 +14,7 @@ class LoginViewModel {
     
     var isValid: Observable<Bool> {
         return Observable.combineLatest(email.asObservable(), password.asObservable()) { email, password in
-            return true//email.isValidEmail && password.count >= 8 && password.count <= 15
+            return email.isValidEmail && password.count >= 8 && password.count <= 15
         }
     }
 }
