@@ -13,7 +13,7 @@ import CoreData
 
 @testable import InstPost
 
-class MockREpository: CoreDataPostRepository {
+class MockRepository: CoreDataPostRepository {
     override func getPostEntity(from posts: [Post]) -> [PostEntity] {
        return (posts as NSArray).compactMap { element in
            
@@ -55,7 +55,7 @@ class PostsViewModelTests: XCTestCase {
         let apiService = MockAPIService()
         
         // ViewModel setup
-        let coreDataDatabase = MockREpository(context: mockContext)//DatabaseFactory.getDatabase(managedObjectContext: mockContext)
+        let coreDataDatabase = MockRepository(context: mockContext)
         viewModel = PostsViewModel(database: coreDataDatabase,
                                    apiService: apiService)
         
