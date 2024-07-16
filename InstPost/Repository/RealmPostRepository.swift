@@ -28,18 +28,17 @@ enum RealmError: Error {
 }
 
 class RealmPostRepository: PostRepository {
-    
-    private let realm = try! Realm()
-    
+        
     func fetchPosts(with predicate: String? = nil) -> Single<[PostEntity]> {
-        return Single.create { [weak self] observer in
+        return Single.create { observer in
             let disposable = Disposables.create()
-            guard let self else {
+            guard let realm = try? Realm()
+            else {
                 observer(.failure(RealmError.selfNotFound))
                 return disposable
             }
             
-            var posts = self.realm.objects(PostRealm.self)
+            var posts = realm.objects(PostRealm.self)
             
             if let predicate = predicate {
                 posts = posts.filter(predicate)
@@ -53,14 +52,14 @@ class RealmPostRepository: PostRepository {
     }
     
     func fetchPost(withId id: Int) -> Single<PostEntity?> {
-        return Single.create { [weak self] observer in
+        return Single.create { observer in
             let disposable = Disposables.create()
-            guard let self else {
+            guard let realm = try? Realm() else {
                 observer(.failure(RealmError.selfNotFound))
                 return disposable
             }
             
-            if let post = self.realm.object(ofType: PostRealm.self, forPrimaryKey: id) {
+            if let post = realm.object(ofType: PostRealm.self, forPrimaryKey: id) {
                 let postEntity = PostEntity(id: post.id, title: post.title, body: post.body, isFavorite: post.isFavorite)
                 observer(.success(postEntity))
             } else {
@@ -72,21 +71,21 @@ class RealmPostRepository: PostRepository {
     }
     
     func save(post: PostEntity) -> Completable {
-        return Completable.create { [weak self] observer in
+        return Completable.create { observer in
             let disposable = Disposables.create()
-            guard let self else {
+            guard let realm = try? Realm() else {
                 observer(.error(RealmError.selfNotFound))
                 return disposable
             }
             
             do {
-                try self.realm.write {
+                try realm.write {
                     let postRealm = PostRealm()
                     postRealm.id = post.id
                     postRealm.title = post.title
                     postRealm.body = post.body
                     postRealm.isFavorite = post.isFavorite
-                    self.realm.add(postRealm, update: .modified)
+                    realm.add(postRealm, update: .modified)
                 }
                 observer(.completed)
             } catch {
@@ -98,22 +97,22 @@ class RealmPostRepository: PostRepository {
     }
     
     func save(posts: [PostEntity]) -> Completable {
-        return Completable.create { [weak self] observer in
+        return Completable.create { observer in
             let disposable = Disposables.create()
-            guard let self else {
+            guard let realm = try? Realm() else {
                 observer(.error(RealmError.selfNotFound))
                 return disposable
             }
             
             do {
-                try self.realm.write {
+                try realm.write {
                     for post in posts {
                         let postRealm = PostRealm()
                         postRealm.id = post.id
                         postRealm.title = post.title
                         postRealm.body = post.body
                         postRealm.isFavorite = post.isFavorite
-                        self.realm.add(postRealm, update: .modified)
+                        realm.add(postRealm, update: .modified)
                     }
                 }
                 observer(.completed)
@@ -126,17 +125,17 @@ class RealmPostRepository: PostRepository {
     }
     
     func deleteAllPosts() -> Completable {
-        return Completable.create { [weak self] observer in
+        return Completable.create { observer in
             let disposable = Disposables.create()
-            guard let self else {
+            guard let realm = try? Realm() else {
                 observer(.error(RealmError.selfNotFound))
                 return disposable
             }
             
             do {
-                try self.realm.write {
-                    let posts = self.realm.objects(PostRealm.self)
-                    self.realm.delete(posts)
+                try realm.write {
+                    let posts = realm.objects(PostRealm.self)
+                    realm.delete(posts)
                 }
                 observer(.completed)
             } catch {
