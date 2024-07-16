@@ -14,7 +14,7 @@ Reactive Programming: Rxswift for reactive programming
 
 Requirements
 iOS 13.0+
-Xcode 12.0+
+Xcode 14.0+
 CocoaPods
 
 Installation
