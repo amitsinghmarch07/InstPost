@@ -7,23 +7,31 @@
 
 import UIKit
 import CoreData
-enum DatabaseType {
-    case coreData(NSManagedObjectContext?)
-    case Realm
+enum DatabaseType: String {
+    case coreData = "coredata"
+    case Realm = "realm"
 }
 class DatabaseFactory {
-    static func getDatabase(type: DatabaseType = .coreData((UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)) -> PostRepository {
-        switch type {
-        case .coreData(let context):
-            return CoreDataDatabaseFactory.getDatabase(managedObjectContext: context)
+    static func getDatabase() -> PostRepository {
+        guard let databaseType = DatabaseType(rawValue:Configuration.shared.databaseType.lowercased()) else {
+            return RealmDatabaseFactory.getDatabase()
+        }
+        
+        switch databaseType {
+        case .coreData:
+            print(databaseType)
+
+            return CoreDataDatabaseFactory.getDatabase()
         case .Realm:
+            print(databaseType)
+
             return RealmDatabaseFactory.getDatabase()
         }
     }
 }
 class CoreDataDatabaseFactory {
-    static func getDatabase(managedObjectContext: NSManagedObjectContext? = nil) -> PostRepository {
-        let context  = managedObjectContext ?? (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static func getDatabase() -> PostRepository {
+        let context  = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         return CoreDataPostRepository(context: context)
     }
 }

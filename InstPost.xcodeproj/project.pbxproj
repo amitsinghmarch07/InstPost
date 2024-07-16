@@ -25,6 +25,9 @@
 		565A7D752C36C45B008DF4BC /* APIServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D742C36C45B008DF4BC /* APIServiceFactory.swift */; };
 		56AEFB6D2C38225A001E7CD5 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6B2C366DC8008DF4BC /* Post+CoreDataProperties.swift */; };
 		56AEFB6E2C38225A001E7CD5 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A7D6C2C366DC8008DF4BC /* Post+CoreDataClass.swift */; };
+		56C2A7062C465BC700E6322B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56C2A7052C465BC700E6322B /* Config.plist */; };
+		56C2A7082C465C7500E6322B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2A7072C465C7500E6322B /* Configuration.swift */; };
+		56C2A7092C465E8600E6322B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2A7072C465C7500E6322B /* Configuration.swift */; };
 		56EBD3A42C3526B500991D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A32C3526B500991D06 /* AppDelegate.swift */; };
 		56EBD3A62C3526B500991D06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A52C3526B500991D06 /* SceneDelegate.swift */; };
 		56EBD3A82C3526B500991D06 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBD3A72C3526B500991D06 /* LoginViewController.swift */; };
@@ -103,6 +106,8 @@
 		565A7D6F2C368AD3008DF4BC /* FavouritesViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModal.swift; sourceTree = "<group>"; };
 		565A7D712C36B72F008DF4BC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		565A7D742C36C45B008DF4BC /* APIServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceFactory.swift; sourceTree = "<group>"; };
+		56C2A7052C465BC700E6322B /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		56C2A7072C465C7500E6322B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		56EBD3A02C3526B500991D06 /* InstPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EBD3A32C3526B500991D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EBD3A52C3526B500991D06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -251,6 +256,7 @@
 				56EBD3A52C3526B500991D06 /* SceneDelegate.swift */,
 				56EBD3FC2C355D2900991D06 /* BaseViewController.swift */,
 				56EBD3FF2C35648A00991D06 /* PostTabbarController.swift */,
+				56C2A7052C465BC700E6322B /* Config.plist */,
 				565A7D732C36C43E008DF4BC /* Factory */,
 				56FE16CC2C436E7300F3B709 /* Repository */,
 				56C2A7042C4648DB00E6322B /* ViewControllers */,
@@ -298,6 +304,7 @@
 				56EBD3EF2C354D6300991D06 /* UIColor+Extensions.swift */,
 				56EBD3EC2C353C4A00991D06 /* UITextfield+Extensions.swift */,
 				565A7D712C36B72F008DF4BC /* String+Extensions.swift */,
+				56C2A7072C465C7500E6322B /* Configuration.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -460,6 +467,7 @@
 				56EBD3B32C3526B800991D06 /* LaunchScreen.storyboard in Resources */,
 				56EBD3B02C3526B800991D06 /* Assets.xcassets in Resources */,
 				56EBD3AB2C3526B500991D06 /* Main.storyboard in Resources */,
+				56C2A7062C465BC700E6322B /* Config.plist in Resources */,
 				56EBD4062C356C3600991D06 /* PostsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +616,7 @@
 			files = (
 				56FE16D32C458B1700F3B709 /* RealmPostRepository.swift in Sources */,
 				565A7D702C368AD3008DF4BC /* FavouritesViewModal.swift in Sources */,
+				56C2A7082C465C7500E6322B /* Configuration.swift in Sources */,
 				56EBD3A82C3526B500991D06 /* LoginViewController.swift in Sources */,
 				565A7D6E2C366DC8008DF4BC /* Post+CoreDataClass.swift in Sources */,
 				56EBD40D2C3570FD00991D06 /* Constants.swift in Sources */,
@@ -642,6 +651,7 @@
 			files = (
 				56FE16D42C458B1700F3B709 /* RealmPostRepository.swift in Sources */,
 				5634006A2C37D45300BDF925 /* LoginViewController.swift in Sources */,
+				56C2A7092C465E8600E6322B /* Configuration.swift in Sources */,
 				563400682C37D44D00BDF925 /* FavouritesViewModal.swift in Sources */,
 				56AEFB6E2C38225A001E7CD5 /* Post+CoreDataClass.swift in Sources */,
 				56EBD3E42C35361200991D06 /* PostsViewModal.swift in Sources */,
